@@ -1,0 +1,25 @@
+# scripts to run before `bun run`ning a file or script
+# useful for registering plugins
+
+preload = ["./preload.ts"]
+jsx = "react"
+jsxFactory = "h"
+jsxFragment = "Fragment"
+jsxImportSource = "react"
+logLevel = "debug" # "debug" | "warn" | "error"
+
+[define]
+# Replace any usage of "process.env.bagel" with the string `lox`.
+# The values are parsed as JSON, except single-quoted strings are supported and `'undefined'` becomes `undefined` in JS.
+# This will probably change in a future release to be just regular TOML instead. It is a holdover from the CLI argument parsing.
+"process.env.bagel" = "'lox'"
+
+[loader]
+# when a .bagel file is imported, treat it like a tsx file
+".bagel" = "tsx"
+
+[install]
+optional = true
+dev = true
+peer = false
+auto = "auto"
